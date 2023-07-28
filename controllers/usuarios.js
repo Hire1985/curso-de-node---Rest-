@@ -56,13 +56,10 @@ const usuariosPatch = (req, res = response) => {
 
 const usuariosDelete = async(req, res = response) => {
     const {id} = req.params
-    // Borrar físicamente de la BD
-    // const usuario = Usuario.findByIdAndDelete(id)
-    //Borrar como referencia
+
     const usuario = await Usuario.findByIdAndUpdate(id, {state:false} )
-    res.json({
-        usuario
-    });
+
+    res.json(usuario);
 }
 module.exports = {
     usuariosGet,
